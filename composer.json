@@ -1,6 +1,7 @@
 {
   "name": "be-positive/docker-binaries",
   "type": "library",
+  "version": "1",
   "description": "Execute command in docker container",
   "authors": [
     {
