@@ -1,2 +1,5 @@
 # docker-binaries
-Essential library for using docker container exec from the project
+
+Pro správné fungování je potřeba v projektu napsat příkaz:
+
+## EXPORT PATH=vendor/bin:$PATH
