@@ -11,6 +11,7 @@ set +o allexport
 test -t 0 && USE_TTY="-t"
 
 CONTAINER_NAME=$1
+CONTAINER_PROJECT_ROOT=/var/www/html
 shift
 
 docker exec -i ${USE_TTY} $envs -w $CONTAINER_PROJECT_ROOT ${PROJECT_NAME}_${CONTAINER_NAME} "$@"
