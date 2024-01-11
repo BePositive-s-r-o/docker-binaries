@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export envs='-e COMPOSER_HOME=/var/www/html/.composer'
+
+de php composer "$@"

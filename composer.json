@@ -1,0 +1,12 @@
+{
+  "name": "be-positive/docker-binaries",
+  "type": "library",
+  "description": "Execute command in docker container",
+  "authors": [
+    {
+      "name": "bePositive",
+      "email": "email@example.com"
+    }
+  ],
+  "bin": ["bin/de", "bin/php", "bin/mysql","bin/composer"]
+}

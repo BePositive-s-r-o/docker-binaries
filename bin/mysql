@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ ! -f "$PWD/.env" ]; then
+	echo ".env file does not exist, exiting!"
+	exit 1
+fi
+
+set -o allexport
+source $PWD/.env
+set +o allexport
+
+test -t 0 && USE_TTY="-t"
+
+docker exec -i ${USE_TTY} ${PROJECT_NAME}_mysql mysql "$@"
