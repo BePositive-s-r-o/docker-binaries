@@ -10,5 +10,11 @@
       "email": "email@example.com"
     }
   ],
-  "bin": ["bin/de", "bin/php", "bin/mysql","bin/composer"]
+  "bin": [
+    "bin/de",
+    "bin/php",
+    "bin/mysql",
+    "bin/composer",
+    "bin/mysqldump"
+  ]
 }
