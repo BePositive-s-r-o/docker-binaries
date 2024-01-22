@@ -1,15 +1,6 @@
 #!/bin/bash
 
-APPLICATION_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../../../../ && pwd )"
-ENV_FILE="$APPLICATION_DIR/.env"
-
-if [ ! -f "$ENV_FILE" ]; then
-    echo ".env file does not exist, exiting!"
-    exit 1
-fi
-
 set -o allexport
-source "$ENV_FILE"
 set +o allexport
 test -t 0 && USE_TTY="-t"
 
@@ -17,4 +8,4 @@ CONTAINER_NAME=$1
 CONTAINER_PROJECT_ROOT=/var/www/html
 shift
 
-docker exec -i ${USE_TTY} $envs -w $CONTAINER_PROJECT_ROOT ${PROJECT_NAME}_${CONTAINER_NAME} "$@"
+docker exec -i ${USE_TTY} $envs -w $CONTAINER_PROJECT_ROOT bePositive_${CONTAINER_NAME} "$@"
