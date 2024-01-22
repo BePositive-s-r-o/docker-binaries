@@ -1,5 +1,5 @@
 #!/bin/bash
 
-export envs='-e COMPOSER_HOME=/var/www/html/.composer'
+CONTAINER_NAME="bePositive_php"
 
-de php composer "$@"
+docker exec -it ${CONTAINER_NAME} composer "$@"
