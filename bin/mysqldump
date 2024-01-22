@@ -3,9 +3,9 @@
 APPLICATION_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && cd ../../../../ && pwd )"
 ENV_FILE="$APPLICATION_DIR/.env"
 
-if [ ! -f "$PWD/.env" ]; then
-	echo ".env file does not exist, exiting!"
-	exit 1
+if [ ! -f "$ENV_FILE" ]; then
+    echo ".env file does not exist, exiting!"
+    exit 1
 fi
 
 set -o allexport
