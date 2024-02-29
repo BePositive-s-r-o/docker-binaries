@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CONTAINER_NAME="bePositive_php"
+
+docker exec -it ${CONTAINER_NAME} localyze "$@"
