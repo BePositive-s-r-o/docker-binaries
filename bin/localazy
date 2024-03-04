@@ -2,4 +2,4 @@
 
 CONTAINER_NAME="bePositive_php"
 
-docker exec -it ${CONTAINER_NAME} localyze "$@"
+docker exec -it ${CONTAINER_NAME} localazy "$@"
