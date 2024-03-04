@@ -15,6 +15,7 @@
     "bin/php",
     "bin/mysql",
     "bin/composer",
-    "bin/mysqldump"
+    "bin/mysqldump",
+    "bin/localazy"
   ]
 }
