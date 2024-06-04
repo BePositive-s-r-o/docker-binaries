@@ -4,4 +4,12 @@ set -o allexport
 set +o allexport
 test -t 0 && USE_TTY="-t"
 
-docker exec -i ${USE_TTY} bePositive_mysql mysql "$@"
+ROOT_DIR=.
+
+if [ -f "$ROOT_DIR/.env" ]; then
+    export $(grep -v '^#' "$ROOT_DIR/.env" | xargs)
+fi
+
+CONTAINER_NAME="${PROJECT_NAME}"
+
+docker exec -i ${USE_TTY} ${CONTAINER_NAME}_mysql mysql "$@"

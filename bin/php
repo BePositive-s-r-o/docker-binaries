@@ -1,5 +1,11 @@
 #!/bin/bash
 
-CONTAINER_NAME="bePositive_php"
+ROOT_DIR=.
 
-docker exec -it ${CONTAINER_NAME} php "$@"
+if [ -f "$ROOT_DIR/.env" ]; then
+    export $(grep -v '^#' "$ROOT_DIR/.env" | xargs)
+fi
+
+CONTAINER_NAME="${PROJECT_NAME}"
+
+docker exec -it ${CONTAINER_NAME}_php php "$@"

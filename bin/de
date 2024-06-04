@@ -1,11 +1,11 @@
 #!/bin/bash
 
-set -o allexport
-set +o allexport
-test -t 0 && USE_TTY="-t"
+ROOT_DIR=.
 
-CONTAINER_NAME=$1
-CONTAINER_PROJECT_ROOT=/var/www/html
-shift
+if [ -f "$ROOT_DIR/.env" ]; then
+    export $(grep -v '^#' "$ROOT_DIR/.env" | xargs)
+fi
 
-docker exec -i ${USE_TTY} $envs -w $CONTAINER_PROJECT_ROOT bePositive_${CONTAINER_NAME} "$@"
+CONTAINER_NAME="${PROJECT_NAME}"
+
+docker exec -it ${CONTAINER_NAME}_php php "$@"

@@ -1,13 +1,13 @@
 {
   "name": "be-positive/docker-binaries",
   "type": "library",
-  "version": "1.2",
+  "version": "1.5",
   "minimum-stability": "dev",
   "description": "Execute command in docker container",
   "authors": [
     {
       "name": "bePositive",
-      "email": "email@example.com"
+      "email": "martin.sterba@bepositive.cz"
     }
   ],
   "bin": [
