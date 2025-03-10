@@ -3,9 +3,23 @@
 ROOT_DIR=.
 
 if [ -f "$ROOT_DIR/.env" ]; then
-    export $(grep -v '^#' "$ROOT_DIR/.env" | xargs)
+    set -o allexport
+    source "$ROOT_DIR/.env" 2>/dev/null
+    set +o allexport
 fi
 
-CONTAINER_NAME="${PROJECT_NAME}"
+CONTAINER_NAME_PHP="${PROJECT_NAME}_php"
+CONTAINER_NAME_FRANKEN="${PROJECT_NAME}_franken"
 
-docker exec -it ${CONTAINER_NAME}_php composer "$@"
+CONTAINER_ID=$(docker ps --format '{{.ID}} {{.Names}}' | awk -v name="$CONTAINER_NAME_PHP" '$2 == name {print $1}')
+
+if [ -z "$CONTAINER_ID" ]; then
+    CONTAINER_ID=$(docker ps --format '{{.ID}} {{.Names}}' | awk -v name="$CONTAINER_NAME_FRANKEN" '$2 == name {print $1}')
+fi
+
+if [ -z "$CONTAINER_ID" ]; then
+    echo "Žádný vhodný kontejner nebyl nalezen (hledá se ${CONTAINER_NAME_PHP} nebo ${CONTAINER_NAME_FRANKEN})."
+    exit 1
+fi
+
+docker exec -it "$CONTAINER_ID" composer "$@"
